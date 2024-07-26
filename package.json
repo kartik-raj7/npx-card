@@ -1,0 +1,34 @@
+{
+  "name": "kartikey-gupta",
+  "version": "1.0.2",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "pub": "npm version major & npm publish"
+  },
+  "type": "module",
+  "keywords": [
+    "card",
+    "npm",
+    "npm card",
+    "npx",
+    "npx card",
+    "business card"
+  ],
+  "author": "Kartikey Gupta",
+  "license": "ISC",
+  "description": "A CLI business card for Kartikey Gupta",
+  "dependencies": {
+    "boxen": "^4.2.0",
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "inquirer": "^10.1.2",
+    "open": "^10.1.0",
+    "ora": "^8.0.1",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  },
+  "bin": {
+    "kartikey": "index.js"
+  }
+}
