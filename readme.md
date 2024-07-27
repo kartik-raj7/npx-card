@@ -10,10 +10,10 @@ Personalization: Allow users to customize their cards with various details and s
 
 ## Screenshots
 
-!(/Images/image1.png)
-!(/Images/image2.png)
-!(/Images/image3.png)
-!(/Images/image4.png)
+![](/Images/image1.png)
+![](/Images/image2.png)
+![](/Images/image3.png)
+![](/Images/image4.png)
 
 ## Getting Started
 
