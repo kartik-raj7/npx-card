@@ -21,4 +21,4 @@ Personalization: Allow users to customize their cards with various details and s
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/npx-card.git
+   gh repo clone kartik-raj7/npx-card
