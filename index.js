@@ -21,11 +21,11 @@ var description = [
   "Technology Used: HTML, SCSS, Javascript, React, Redux, Thunk, AntDesign, ExpressJS, MongoDB & Nodejs.",
 ];
 var links = [
-  { name: "LeetCode", url: "https://leetcode.com/" },
-  { name: "Codeforces", url: "https://codeforces.com/" },
-  { name: "CodeChef", url: "https://www.codechef.com/" },
-  { name: "GeeksforGeeks", url: "https://www.geeksforgeeks.org/" },
-  { name: "LinkedIn", url: "https://www.linkedin.com/" },
+  { name: "LeetCode", url: "https://leetcode.com/u/kartik-raj7/" },
+  { name: "Codeforces", url: "https://codeforces.com/profile/kartik_raj7" },
+  { name: "CodeChef", url: "https://www.codechef.com/users/kartik_raj7" },
+  { name: "GeeksforGeeks", url: "https://www.geeksforgeeks.org/user/kartikeyrajgupta007/" },
+  { name: "LinkedIn", url: "https://linkedin.com/in/kartikey20gupta" },
 ];
 var experienceData = [
   {
@@ -123,7 +123,7 @@ const tip2 = [
   "",
 ].join("\n");
 ///Header
-const boxWidth = 70;
+const boxWidth = 100;
 const namePhone = `${chalk.bold("Kartikey Gupta")}${"".padEnd(
   boxWidth - "Kartikey Gupta".length - "+91 8475008968".length
 )}${chalk.white('+91 8475008968')}`;
@@ -311,7 +311,9 @@ const downloadResume = async () => {
       const localFileName = "kartikey-resume.pdf";
       const localFilePath = path.join(process.cwd(), localFileName);
 
-      request(resumeUrl)
+      const requestStream = request(resumeUrl);
+
+      requestStream
         .pipe(fs.createWriteStream(localFilePath))
         .on("finish", () => {
           spinnerResume.stop();
@@ -324,10 +326,11 @@ const downloadResume = async () => {
           reject(err);
         });
 
-      // Handle process exit
+      // Handle process exit (SIGINT)
       process.on('SIGINT', () => {
         spinnerResume.stop();
-        console.log('\nProcess interrupted. Exiting...\n');
+        requestStream.destroy(); // Gracefully stop download
+        console.log('\nDownload interrupted. Exiting...\n');
         process.exit();
       });
     });
@@ -349,9 +352,6 @@ const handleCommand = async (command) => {
       spinnerEmail.stop();
       open("mailto:kartikey@example.com");
       console.log("\nDone, see you soon at inbox.\n");
-      break;
-    case "Download my Resume ⬇️":
-       downloadResume();
       break;
   }
 };
@@ -380,6 +380,10 @@ const main = async () => {
     // Handle the selected command
     if (command === "exit") {
       console.log(chalk.green("Exiting..."));
+      break;
+    }
+    if(command === 'Download my Resume ⬇️'){
+      downloadResume();
       break;
     }
     await handleCommand(command);
